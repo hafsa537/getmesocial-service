@@ -3,9 +3,7 @@ package com.example.GETMESOCIALSERVICE.Resource;
 import com.example.GETMESOCIALSERVICE.Model.User;
 import com.example.GETMESOCIALSERVICE.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
@@ -13,12 +11,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserResource {
 
     @Autowired
-    private UserService userservice;
+    private UserService userService;
 
     @GetMapping("/user")
 
-    public User getUser()
-    {
-    return userservice.getUser();
+    public User getUser() {
+        return userService.getUser();
+    }
+
+    @PostMapping("/user")
+    public User saveUser(@RequestBody User user) {
+        return userService.saveUser(user);
     }
 }
