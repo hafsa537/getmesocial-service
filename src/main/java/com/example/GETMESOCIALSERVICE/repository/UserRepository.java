@@ -18,7 +18,24 @@ public class UserRepository {
     }
 
     public User saveUser(User user) {
+        user.setUserId(userList.size() + 1);
         userList.add(user);
         return user;
+    }
+
+    public List<User> getAllUsers() {
+        return userList;
+    }
+
+    public User getUserbyId(int userId) {
+        for(User user:userList)
+        {
+            if(user.getUserId() == userId){
+
+                return user;
+        }
+        }
+        return null;
+
     }
 }
